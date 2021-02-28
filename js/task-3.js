@@ -23,22 +23,14 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ]
+const galleryEl = document.querySelector('#gallery')
 
 const makeAtibutsForElement = (images) => {
   const { url, alt } = images
 
-  return `<li class='gallery__item'><img src='${url}, alt='${alt}'</li>`
+  return `<li class="image-item"><img src='${url}, alt='${alt}' width=500</li>`
 }
-console.log(makeAtibutsForElement(images))
 
-const galleryEl = document.querySelector('#gallery')
-console.log(galleryEl)
+const templateGallery = images.map(makeAtibutsForElement).join(' ')
 
-const templateGallety = images.map(makeAtibutsForElement).join(' ')
-console.log(templateGallety)
-
-galleryEl.insertAdjacentHTML('afterbegin', templateGallety)
-
-let x = '+dsadsf+da-sfs+'
-
-console.log(x.replace(/[+, -]/gi, ''))
+galleryEl.insertAdjacentHTML('afterbegin', templateGallery)

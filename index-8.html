@@ -10,11 +10,13 @@
   </head>
   <body>
     <a href="./index.html">GO HOME</a>
-    <div id="counter">
-      <button type="button" data-action="decrement">-1</button>
-      <span id="value">0</span>
-      <button type="button" data-action="increment">+1</button>
+
+    <div id="controls">
+      <input type="number" min="0" max="100" step="1" />
+      <button type="button" data-action="render">Создать</button>
+      <button type="button" data-action="destroy">Очистить</button>
     </div>
-    <script src="./js/task-4.js" type="module"></script>
+    <div id="boxes"></div>
+    <script src="./js/task-8.js" type="module"></script>
   </body>
 </html>

@@ -7,7 +7,6 @@
 // Посчитает и выведет в консоль количество категорий в ul#categories, то есть элементов li.item. Получится 'В списке 3 категории.'.
 
 const getElementById = document.querySelector('#categories')
-console.log(getElementById)
 const getElements = document.querySelectorAll('.item')
 console.log(`Количество категорий: ${getElements.length}`)
 
