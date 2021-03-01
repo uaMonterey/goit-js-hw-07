@@ -18,22 +18,38 @@ const btnRenderRef = document.querySelector('[data-action="render"]')
 const btnDestroyRef = document.querySelector('[data-action="destroy"]')
 const storage = document.querySelector('#boxes')
 
-let amountBoxes
+let amountBoxes = 0
 
 inputRef.addEventListener('input', getAmountBoxes)
 
+btnDestroyRef.addEventListener('click', desroing)
+
+btnRenderRef.addEventListener('click', rendering)
+
 function getAmountBoxes({ target }) {
   amountBoxes = +target.value
-  // console.log(amountBoxes)
+
   return amountBoxes
 }
 
-amountBoxes = [...Array(+e.target.value)].map((_, idx) => ++idx)
+const boxFactory = () => {
+  return [...Array(amountBoxes)]
+    .map((_, idx) => +idx)
+    .map((el) => {
+      const boxElement = document.createElement('div')
+      boxElement.style.marginTop = `10px`
+      boxElement.style.width = ` ${el * 10 + 30}px`
+      boxElement.style.height = ` ${el * 10 + 30}px`
+      boxElement.style.backgroundColor = '#' + (Math.random().toString(16) + '000000').substring(2, 8).toUpperCase()
+      return boxElement
+    })
+}
 
-function createBoxes() {
-  const boxFactory = document.createElement('div')
-  boxFactory.style.width = `30px`
-  boxFactory.style.height = `30px`
-  boxFactory.style.backgroundColor = '#' + (Math.random().toString(16) + '000000').substring(2, 8).toUpperCase()
-  storage.append(boxFactory)
+function desroing() {
+  storage.innerHTML = ''
+}
+
+function rendering() {
+  const boxesMarkup = boxFactory(amountBoxes)
+  storage.append(...boxesMarkup)
 }
